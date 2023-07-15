@@ -3,7 +3,8 @@ import { Box } from "@mui/system";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const Addproduct = () => {
+const Addproduct = ({ addProduct }) => {
+  // 3 получили функцию addProduct
   const navigate = useNavigate();
   // console.log(navigate);
   const [title, setTitle] = useState("");
@@ -14,6 +15,14 @@ const Addproduct = () => {
     if (!title || !price || !image) {
       alert("Заполните все поля");
     } else {
+      let newProduct = {
+        // 2
+        title,
+        price,
+        image,
+      };
+      addProduct(newProduct);
+      // console.log(newProduct);
       navigate("/");
     }
   }
